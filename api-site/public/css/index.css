@@ -3,6 +3,7 @@
     margin: 0;
     color: #ffffff;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    scroll-behavior: smooth;
 }
 
 .header {
@@ -47,7 +48,6 @@ li a {
     text-decoration: none;
     cursor: pointer;
 }
-
 
 .banner {
     height: fit-content;
@@ -104,12 +104,17 @@ li a {
     height: 80px;
 }
 
+.social .container {
+    height: 600px;
+    background-color: red;
+}
+
 /* ------------------------------------------------------------------ */
 
 /* FOOTER */
 
 .footer {
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%;
