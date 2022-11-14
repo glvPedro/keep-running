@@ -1,0 +1,340 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+/* ------------------------------------------------------------------------------------- */
+.header {
+    padding: 15px;
+    background-color: black;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#img_logo {
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+}
+
+/* h1 {
+    margin-left: -40%;
+    color: #ffffff;
+    font-weight: 500;
+} */
+
+.header ul {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    list-style: none;
+}
+
+/* li {
+    color: #ffffff;
+} */
+
+li a {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+
+/* HEADER */
+.col {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height: 1px;
+    float: left
+}
+
+.col-desktop-1 {
+    width: 8.333333%
+}
+
+.col-desktop-2 {
+    width: 16.66%
+}
+
+.col-desktop-3 {
+    width: 24.999999%
+}
+
+.col-desktop-4 {
+    width: 33.333332%
+}
+
+.col-desktop-5 {
+    width: 41.666665%
+}
+
+.col-desktop-6 {
+    width: 49.999998%
+}
+
+.col-desktop-7 {
+    width: 58.333331%
+}
+
+.col-desktop-8 {
+    width: 66.666664%
+}
+
+.col-desktop-9 {
+    width: 74.999997%
+}
+
+.col-desktop-10 {
+    width: 83.33333%
+}
+
+.col-desktop-11 {
+    width: 91.666663%
+}
+
+.col-desktop-12 {
+    width: 100%
+}
+
+.col-offset-desktop-1 {
+    margin-left: 8.333333%
+}
+
+.col-offset-desktop-2 {
+    margin-left: 16.66%
+}
+
+.col-offset-desktop-3 {
+    margin-left: 24.999999%
+}
+
+.col-offset-desktop-4 {
+    margin-left: 33.333332%
+}
+
+.col-offset-desktop-5 {
+    margin-left: 41.666665%
+}
+
+.col-offset-desktop-6 {
+    margin-left: 49.999998%
+}
+
+.col-offset-desktop-7 {
+    margin-left: 58.333331%
+}
+
+.col-offset-desktop-8 {
+    margin-left: 66.666664%
+}
+
+.col-offset-desktop-9 {
+    margin-left: 74.999997%
+}
+
+.col-offset-desktop-10 {
+    margin-left: 83.33333%
+}
+
+.col-offset-desktop-11 {
+    margin-left: 91.666663%
+}
+
+.col-offset-desktop-12 {
+    margin-left: 100%
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: normal;
+    text-align: center;
+    font-size: 25px;
+    margin: 10px 0 20px 0
+}
+
+h2:after {
+    content: '';
+    display: block;
+    background-color: rgb(0, 0, 0);
+    margin: 5px auto 0 auto;
+    width: 50px;
+    height: 2px
+}
+
+body {
+    color: rgb(0, 0, 0);
+    line-height: 35px
+}
+
+/* ----------------------------------------------------------------------- */
+
+ #header h2 {
+    /* font-size: 54px; */
+    line-height: 60px;
+} 
+
+#header {
+    background: #000000 no-repeat fixed center;
+    background-size: cover;
+    color: #fff;
+    width: 100%;
+    height: 660px;
+    position: relative;
+    padding-top: 30px
+}
+
+#header a {
+    color: #fff;
+    transition: ease .5s all
+}
+
+#header nav {
+    text-align: right
+}
+
+#header nav ul,
+#header nav ul li {
+    display: inline-block
+}
+
+#header .title {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: center
+}
+
+.section {
+    padding: 30px 0 30px 0;
+    
+}
+
+.section-center {
+    text-align: center
+}
+
+@media (max-width:992px) {
+
+    #header,
+    #header nav {
+        text-align: center
+    }
+}
+
+#header.page-quem-somos {
+    background-image: url("../assents/jovem-casal-correndo.webp");
+    /* height: 450px; */
+}
+
+#intro h2,
+#valores h2 {
+    font-size: 20px
+}
+
+#intro h2 {
+    text-align: left
+}
+
+#intro h2:after {
+    margin: 5px 0 0 0
+}
+
+#valores {
+    background-color: #f3f0e7
+}
+
+#valores h2 {
+    margin-top: 20px
+}
+
+#valores h2:after {
+    display: none
+}
+
+#img-box img {
+    max-width: 100%;
+    height: auto
+}
+
+@media (max-width:991px) {
+    #img-box {
+        text-align: center
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+
+/* FOOTER */
+/* .footer {
+    background: #000;
+    padding: 10px 0px;
+    font-family: 'Play', sans-serif;
+    text-align: center;
+} 
+
+/* .footer .row {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: gray;
+    font-size: 0.8em;
+} */
+
+/* .footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.5s;
+}
+
+.footer .row a:hover {
+    color: #fff;
+}
+
+.footer .row ul {
+    width: 100%;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0px 30px;
+}
+
+.footer .row a i {
+    font-size: 2em;
+    margin: 0% 1%;
+}
+
+@media (max-width:720px) {
+    .footer {
+        text-align: left;
+        padding: 5%;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 10px 0px;
+        text-align: left;
+    }
+
+    .footer .row a i {
+        margin: 0% 3%;
+    }
+} */
