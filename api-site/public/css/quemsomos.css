@@ -31,11 +31,11 @@ body {
     border-radius: 20px;
 }
 
-/* h1 {
+.header h1 {
     margin-left: -40%;
     color: #ffffff;
     font-weight: 500;
-} */
+}
 
 .header ul {
     display: flex;
@@ -54,9 +54,17 @@ li a {
     cursor: pointer;
 }
 
+span:after {
+    content: '';
+    display: block;
+    background-color: rgb(255, 94, 0);
+    margin: 5px auto 0 auto;
+    width: 50px;
+    height: 2px;
+}
+
 /* ------------------------------------------------------------------------------------------------ */
 
-/* HEADER */
 .col {
     position: relative;
     padding-left: 15px;
@@ -172,7 +180,7 @@ h2 {
 h2:after {
     content: '';
     display: block;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 94, 0);
     margin: 5px auto 0 auto;
     width: 50px;
     height: 2px
@@ -180,15 +188,16 @@ h2:after {
 
 body {
     color: rgb(0, 0, 0);
-    line-height: 35px
+    line-height: 45px
 }
 
 /* ----------------------------------------------------------------------- */
 
- #header h2 {
-    /* font-size: 54px; */
+#header h2 {
+     font-size: 34px; 
     line-height: 60px;
-} 
+    color: #000000;
+}
 
 #header {
     background: #000000 no-repeat fixed center;
@@ -224,7 +233,7 @@ body {
 
 .section {
     padding: 30px 0 30px 0;
-    
+
 }
 
 .section-center {
@@ -283,22 +292,22 @@ body {
 /* ------------------------------------------------------------------------------------------------ */
 
 /* FOOTER */
-/* .footer {
+.footer {
     background: #000;
     padding: 10px 0px;
     font-family: 'Play', sans-serif;
     text-align: center;
-} 
+}
 
-/* .footer .row {
+.footer .row {
     width: 100%;
     margin: 1% 0%;
     padding: 0.6% 0%;
     color: gray;
     font-size: 0.8em;
-} */
+}
 
-/* .footer .row a {
+.footer .row a {
     text-decoration: none;
     color: gray;
     transition: 0.5s;
@@ -337,4 +346,4 @@ body {
     .footer .row a i {
         margin: 0% 3%;
     }
-} */
+}

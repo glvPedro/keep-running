@@ -1,0 +1,218 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* ------------------------------------------------------------------------------------- */
+.header {
+    padding: 15px;
+    background-color: black;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#img_logo {
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+}
+
+.header h1 {
+    margin-left: -40%;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.header ul {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    list-style: none;
+}
+
+li {
+    color: #ffffff;
+}
+
+li a {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header span:after {
+    content: '';
+    display: block;
+    background-color: rgb(255, 94, 0);
+    margin: 5px auto 0 auto;
+    width: 50px;
+    height: 2px;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/* BANNER */
+/* CADASTRO */
+
+.banner {
+    height: fit-content;
+    padding: 200px 0;
+    background-size: cover;
+}
+
+.banner .container {
+    height: 400px;
+    font-size: 36px;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner .container .card {
+    background-color: #e5e5e5;
+    height: 700px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.card {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card h4 {
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* --------------------- */
+/* FORMULARIO */
+
+.formulario .tipo_campo {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600 !important;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 10px;
+    border: 2px solid #000000;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 6px 5px;
+    color: white;
+    background-color: #000000;
+    width: 100px;
+    align-self: center;
+    margin-top: 20px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ----------------------- */
+/* POS_BUTTOM */
+
+.txt1 {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.5;
+}
+
+.txt2 {
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/* FOOTER */
+.footer {
+    background: #000;
+    padding: 10px 0px;
+    font-family: 'Play', sans-serif;
+    text-align: center;
+}
+
+.footer .row {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.5s;
+}
+
+.footer .row a:hover {
+    color: #fff;
+}
+
+.footer .row ul {
+    width: 100%;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0px 30px;
+}
+
+.footer .row a i {
+    font-size: 2em;
+    margin: 0% 1%;
+}
+
+@media (max-width:720px) {
+    .footer {
+        text-align: left;
+        padding: 5%;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 10px 0px;
+        text-align: left;
+    }
+
+    .footer .row a i {
+        margin: 0% 3%;
+    }
+}

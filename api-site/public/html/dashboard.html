@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../assents/icon/istockphoto-503427908-1024x1024.jpg">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <title>KEEP RUNNING</title>
+</head>
+
+<body>
+    <div class="fundo">
+        <div class="menulateral">
+            <ul>
+
+                <li style="background-color: white; border-radius: 10px">
+                    <a href="dashboard.html" style="color: #000000">
+                        <span class="icon">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </span>
+                        <span class="menu">Gráficos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="perfil.html">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="menu">Perfil</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="menu">Sair</span>
+                    </a>
+                </li>
+
+            </ul>
+            <div id="img_logo">
+                <img src="../assents/user.png" alt=""
+                    style="width: 50%; display: flex; align-items: center; margin-left: 20%; border-radius: 40px;">
+            </div>
+        </div>
+
+        <!--DASHBOARD  -->
+        <div class="dashboard">
+            <!-- GRAFICOS -->
+
+            <div class="container">
+                <div id="caixa">
+                    <div class="grafico">
+                        <div id="legenda">
+                            <div id="legenda">RANKING</div>
+                            medir por:
+                            <select name="tp_medida" id="slc_id" onchange="slc_dias()">
+                                <option value="caloria">Calorias</option>
+                                <option value="distancia">Distância</option>
+                                <option value="maiortempo">Maior tempo</option>
+                                <option value="menortempo">Menor tempo</option>
+                            </select>
+                        </div>
+                        <div id="grafics">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
+
+<script>
+    var labels = [
+        'Segunda',
+        'Terça',
+        'Quarta',
+        'Quinta',
+        'Sexta',
+        'Sábado',
+        'Domingo',
+    ];
+
+    var data = {
+        labels: labels,
+        datasets: [{
+            label: 'Média semanal - Calorias',
+            backgroundColor: 'rgb(255, 94, 0)',
+            borderColor: 'rgb(255, 94, 0)',
+            data: [5, 2, 10, 8, 15, 12, 27, 32, 16, 14, 20, 18, 25, 22, 30, 21, 17],
+        }]
+    };
+
+    var config = {
+        type: 'bar',
+        data: data,
+        options: {}
+    };
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    function slc_dias() {
+        var categoria = slc_id.value;
+
+        /* ----------------------------------------------------------------------------------------------- */
+
+        if (categoria == 'caloria') {
+            myChart.destroy();
+
+            var categoria1 = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Média semanal - Calorias',
+                        backgroundColor: 'rgb(255, 94, 0)',
+                        borderColor: 'rgb(255, 94, 0)',
+                        data: [5, 2, 10, 8, 15, 12, 27, 32, 16, 14, 20, 18, 25, 22, 30, 21, 17],
+                    },
+                ],
+            };
+            config.data = categoria1;
+            myChart = new Chart(document.getElementById("myChart"), config);
+        }
+
+        /* ----------------------------------------------------------------------------------------------- */
+
+        if (categoria == 'distancia') {
+            myChart.destroy();
+
+            var categoria2 = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Média semanal - Distância',
+                        backgroundColor: 'rgb(255, 94, 0)',
+                        borderColor: 'rgb(255, 94, 0)',
+                        data: [1.5, 1.2, 0.9, 0.4, 0.8, 4.0, 1.0, 0.6, 3.0, 5.1, 1.2, 3.0],
+                    },
+                ],
+            };
+            config.data = categoria2;
+            myChart = new Chart(document.getElementById("myChart"), config);
+        }
+
+        /* ----------------------------------------------------------------------------------------------- */
+
+        if (categoria == 'maiortempo') {
+            myChart.destroy();
+
+            var categoria3 = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Média semanal - Maior Tempo",
+                        backgroundColor: 'rgb(255, 94, 0)',
+                        borderColor: 'rgb(255, 94, 0)',
+                        data: [2.45, 1.20, 0.33, 0.58, 2.06, 2.10, 3.27, 0.22, 2.16, 0.14, 2.21, 1.43],
+                    },
+                ],
+            };
+            config.data = categoria3;
+            myChart = new Chart(document.getElementById("myChart"), config);
+        }
+
+        /* ----------------------------------------------------------------------------------------------- */
+
+        if (categoria == 'menortempo') {
+            myChart.destroy();
+
+            var categoria4 = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Média semanal - Menor Tempo",
+                        backgroundColor: 'rgb(255, 94, 0)',
+                        borderColor: 'rgb(255, 94, 0)',
+                        data: [0.45, 0.20, 1.33, 1.12, 0.58, 0.06, 0.10, 0.27, 0.42, 0.16, 0.14, 2.21, 1.43],
+                    },
+                ],
+            };
+            config.data = categoria4;
+            myChart = new Chart(document.getElementById("myChart"), config);
+        }
+    }
+</script>
