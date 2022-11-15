@@ -13,7 +13,7 @@ body {
 
 /* ------------------------------------------------------------------------------------- */
 .header {
-    padding: 15px;
+    padding: 10px;
     background-color: black;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .header h1 {
-    margin-left: -40%;
+    margin-left: -35%;
     color: #ffffff;
     font-weight: 500;
 }
