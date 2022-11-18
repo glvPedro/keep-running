@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="icon" type="image/x-icon" href="./assents/icon/istockphoto-503427908-1024x1024.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+    <title>KEEP RUNNING</title>
+</head>
+
+<body>
+    <!----------------------------------------------------------------------------------------------------------------------->
+    <!-- HEADER -->
+
+    <div class="header">
+        <div class="container">
+            <img id="img_logo" src="./assents/icon/istockphoto-503427908-1024x1024.jpg" alt="">
+            <h1>KEEP RUNNING</h1>
+            <div class="navbar">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="quemsomos.html">quem somos</a></li>
+                    <li><a href="login.html">login</a></li>
+                    <li><a href="cadastro.html"><span id="highlighter">cadastro</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------------------------------------------------------------------------------------->
+    <!-- BANNER -->
+
+    <div class="banner">
+        <div class="container">
+            <div class="card">
+                <h2>Cadastre-se!</h2>
+                <div class="formulario">
+
+                    <span class="tipo_campo">Nome:</span>
+                    <input id="nome_input" type="text" placeholder="Ada Lovelace">
+
+                    <span class="tipo_campo">E-mail:</span>
+                    <input id="email_input" type="text" placeholder="usuario@hotmail.com">
+
+                    <span class="tipo_campo">Data de nascimento:</span>
+                    <input id="dtNascimento_input" type="date">
+
+                    <!-- <span class="tipo_campo">Modalidade favorita:</span>
+                        <input id="email_input" type="text" placeholder="caminhada - cooper - 100m rasos"> -->
+
+                    <span class="tipo_campo">Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******">
+
+                    <span class="tipo_campo">Confirmação de senha:</span>
+                    <input id="confirmacao_senha_input" type="password" placeholder="******">
+
+                    <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                </div>
+
+                <div class="pos_button">
+                    <span class="txt1">
+                        Já tem uma conta?
+                    </span>
+
+                    <a class="txt2" href="login.html">
+                        Entre!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------------------------------------------------------------------------------->
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="row">
+            <a href="https://www.facebook.com/keeprunningbrasil/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/teniscerto/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.youtube.com/c/KeepRunningBrasil/featured"><i class="fa fa-youtube"></i></a>
+            <a href="https://twitter.com/kennycooperjr"><i class="fa fa-twitter"></i></a>
+        </div>
+
+        <div class="row">
+            <ul>
+                <li><a href="#">Contate-nos</a></li>
+                <li><a href="quemsomos.html">Quem somos</a></li>
+                <li><a href="#">Políticas de privacidade</a></li>
+                <li><a href="#">Termos e Condições</a></li>
+            </ul>
+        </div>
+
+        <div class="row">
+            KEEP RUNNING @Copyright © 2022 - Direitos reservados || Designed By: Pedro Gonçalves
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+        /* aguardar(); */
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var dtNascimentoVar = dtNascimento_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nomeVar == "" || emailVar == "" || dtNascimentoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            /* finalizarAguardar();
+            return false; */
+        }
+        else {
+            /* setInterval(sumirMensagem, 5000) */
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                dtNascimentoServer: dtNascimentoVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                /* finalizarAguardar(); */
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            /* finalizarAguardar(); */
+        });
+
+        return false;
+    }
+
+    /*  function sumirMensagem() {
+         cardErro.style.display = "none"
+     } */
+
+</script>
