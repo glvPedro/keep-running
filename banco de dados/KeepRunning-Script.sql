@@ -2,32 +2,27 @@ create database keep_running;
 use keep_running;
 
 create table usuario(
-id_usuario int primary key auto_increment,
+id int primary key auto_increment,
 nome varchar(45),
 email varchar(45),
 dtNascimento date,
 senha varchar(45)
 );
 
-create table modalidade(
-id_modalidade int primary key auto_increment,
-tipo varchar(45),
-descricao varchar(45)
-);
-
 create table treino(
-id_registro int primary key auto_increment,
-fk_modalidade int,
-foreign key (fk_modalidade) references modalidade(id_modalidade),
+id int primary key auto_increment,
+duracao time,
+distancia decimal(10,2),
+ritmo decimal(10,2),
+calorias int,
 fk_usuario int,
-foreign key (fk_usuario) references usuario(id_usuario),
-dt_pratica datetime
+foreign key (fk_usuario) references usuario(id)
 );
 
 select * from usuario;
-
-select * from modalidade;
 select * from treino;
 
-select * from usuario u join treino t on u.id_usuario = t.fk_usuario
-						join modalidade m on m.id_modalidade = t.fk_modalidade;
+select u.nome, t. duracao duração, t.distancia distância, t.ritmo, t.calorias
+from usuario u join treino t on u.id = t.fk_usuario;
+
+select u.nome, calorias from treino join usuario u ON fk_usuario = u.id order by calorias desc;

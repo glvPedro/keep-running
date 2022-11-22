@@ -97,9 +97,39 @@ function cadastrar(req, res) {
     }
 }
 
+function registrar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var duracao = req.body.duracaoServer;
+    var distancia = req.body.distanciaServer;
+    var ritmo = req.body.ritmoServer;
+    var calorias = req.body.caloriasServer;
+    var fk_usuario = req.body.fk_usuarioServer;
+
+    // Faça as validações dos valores
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.registrar(duracao, distancia, ritmo, calorias, fk_usuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao registrar um treino! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
+    registrar,
     listar,
     testar
 }

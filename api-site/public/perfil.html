@@ -33,8 +33,6 @@
                     </a>
                 </li>
 
-
-
                 <li>
                     <a href="login.html">
                         <span class="icon">
@@ -58,14 +56,16 @@
                     <div class="formulario">
 
                         <span class="tipo_campo">Altura:</span>
-                        <input id="nome_input" type="text" placeholder="Ada Lovelace">
+                        <input id="ipt_altura" type="text" placeholder="1.80">
 
                         <span class="tipo_campo">Peso:</span>
-                        <input id="email_input" type="text" placeholder="usuario@hotmail.com">
+                        <input id="ipt_peso" type="text" placeholder="80.00">
 
                         <button class="btn" onclick="calcular()">Calcular</button>
                     </div>
+                    <div id="div_text">
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,24 +77,22 @@
                     <div class="formulario">
 
                         <span class="tipo_campo">Duração:</span>
-                        <input id="senha_input" type="time">
+                        <input id="duracao_input" type="time">
 
                         <span class="tipo_campo">Distância:</span>
-                        <input id="nome_input" type="text" placeholder="Ada Lovelace">
+                        <input id="distancia_input" type="text" placeholder="1.35 km">
 
                         <span class="tipo_campo">Ritmo:</span>
-                        <input id="email_input" type="text" placeholder="usuario@hotmail.com">
+                        <input id="ritmo_input" type="text" placeholder="4.13">
 
                         <span class="tipo_campo">Calorias:</span>
-                        <input id="dtNascimento_input" type="text" placeholder="***">
+                        <input id="calorias_input" type="text" placeholder="435 kcal">
 
-                        <button class="btn" onclick="cadastrar()">Registrar</button>
+                        <button class="btn" onclick="registrar()">Registrar</button>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -115,7 +113,7 @@
         }
 
         else if (imc >= 18.6 && imc <= 24.9) {
-            div_text.innerHTML = `seu IMC é de: <b>${imc.toFixed(2)}</b> e você está <b>no peso ideal</b>`
+            div_text.innerHTML = `seu IMC é de: <b>${imc.toFixed(2)}</b> e você está no <b>peso ideal</b>`
         }
 
         else if (imc >= 25.0 && imc <= 29.9) {
@@ -123,15 +121,82 @@
         }
 
         else if (imc >= 30.0 && imc <= 34.9) {
-            div_text.innerHTML = `seu IMC é de: <b>${imc.toFixed(2)}</b> e você está <b>com obesidade grau I</b>`
+            div_text.innerHTML = `seu IMC é de: <b>${imc.toFixed(2)}</b> e você está com <b>obesidade grau I</b>`
         }
 
         else if (imc >= 35.0 && imc <= 39.9) {
-            div_text.innerHTML = `seu IMC é de: <b>${imc}</b> e você está <b>com obesidade grau II (severa)</b>`
+            div_text.innerHTML = `seu IMC é de: <b>${imc.toFixed(2)}</b> e você está com <b>obesidade grau II (severa)</b>`
         }
 
-        else if (imc > 40) {
-            div_text.innerHTML = `seu IMC é de: <b>${imc}</b> e você está <b>com obesidade grau III (mórbida)</b>`
+        else {
+            div_text.innerHTML = `seu IMC é de: <b>${imc.toFixed(2)}</b> e você está com <b>obesidade grau III (mórbida)</b>`
         }
     }
+
+    function registrar() {
+        /* aguardar(); */
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var duracaoVar = duracao_input.value;
+        var distanciaVar = distancia_input.value;
+        var ritmoVar = ritmo_input.value;
+        var caloriasVar = calorias_input.value;
+        var fk_usuarioVar = Number(sessionStorage.getItem('ID_USUARIO'));
+
+        if (duracaoVar == "" || distanciaVar == "" || ritmoVar == "" || caloriasVar == "") {
+            alert('Mensagem de erro para todos os campos em branco');
+
+            /* finalizarAguardar();
+            return false; */
+        }
+        else {
+            /* setInterval(sumirMensagem, 5000) */
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                duracaoServer: duracaoVar,
+                distanciaServer: distanciaVar,
+                ritmoServer: ritmoVar,
+                caloriasServer: caloriasVar,
+                fk_usuarioServer: fk_usuarioVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                /* cardErro.style.display = "block"; */
+
+                alert("treino registrado com sucesso!");
+
+                 setTimeout(() => {
+                    window.location = "dashboard.html";
+                }, "1000") 
+
+                limparFormulario();
+                /* finalizarAguardar(); */
+            } else {
+                throw ("Houve um erro ao tentar registrar um treino!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            /* finalizarAguardar(); */
+        });
+
+        return false;
+    }
+
+    /*  function sumirMensagem() {
+         cardErro.style.display = "none"
+     } */
+
 </script>
