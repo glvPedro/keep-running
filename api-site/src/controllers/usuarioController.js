@@ -123,13 +123,40 @@ function registrar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-
 }
+
+/* function consultar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var duracao = req.body.duracaoServer;
+    var distancia = req.body.distanciaServer;
+    var ritmo = req.body.ritmoServer;
+    var calorias = req.body.caloriasServer;
+
+    // Faça as validações dos valores
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.consultar(duracao, distancia, ritmo, calorias)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao consultar um treino! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+} */
 
 module.exports = {
     entrar,
     cadastrar,
     registrar,
+    /* consultar, */
     listar,
     testar
 }

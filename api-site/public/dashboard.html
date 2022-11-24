@@ -10,7 +10,7 @@
     <title>KEEP RUNNING</title>
 </head>
 
-<body>
+<body onload="obterDadosGrafico()">
     <div class="fundo">
         <div class="menulateral">
             <ul>
@@ -49,153 +49,114 @@
             </div>
         </div>
 
-        <!--DASHBOARD  -->
         <div class="dashboard">
-            <!-- GRAFICOS -->
-
             <div class="container">
                 <div id="caixa">
                     <div class="grafico">
-                        <div id="legenda">
-                            <div id="legenda">RANKING</div>
-                            medir por:
-                            <select name="tp_medida" id="slc_id" onchange="slc_dias()">
-                                <option value="caloria">Calorias</option>
-                                <option value="distancia">Distância</option>
-                                <option value="maiortempo">Maior tempo</option>
-                                <option value="menortempo">Menor tempo</option>
-                            </select>
-                        </div>
+                        <div id="legenda">confira os seus treinos!</div>
                         <div id="grafics">
-                            <canvas id="myChart"></canvas>
+
+                            <table>
+                                <tr>
+                                    <th>duração</th>
+                                    <th>distância</th>
+                                    <th>ritmo</th>
+                                    <th>calorias</th>
+                                </tr>
+
+                                <tr>
+                                    <th id="tr_duracao"></th>
+                                    <th id="tr_distancia"></th>
+                                    <th id="tr_ritmo"></th>
+                                    <th id="tr_calorias"></th>
+                                </tr>
+                                <button onclick="plotarGrafico()">teste</button>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
 
 <script>
-    var labels = [
-        'Segunda',
-        'Terça',
-        'Quarta',
-        'Quinta',
-        'Sexta',
-        'Sábado',
-        'Domingo',
-    ];
+    var captura = [];
+    function obterDadosGrafico(idtreino) {
+        var fk_usuarioVar = Number(sessionStorage.getItem('ID_USUARIO'));
 
-    var data = {
-        labels: labels,
-        datasets: [{
-            label: 'Média semanal - Calorias',
-            backgroundColor: 'rgb(255, 94, 0)',
-            borderColor: 'rgb(255, 94, 0)',
-            data: [5, 2, 10, 8, 15, 12, 27, 32, 16, 14, 20, 18, 25, 22, 30, 21, 17],
-        }]
-    };
+        /* if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        } */
 
-    var config = {
-        type: 'bar',
-        data: data,
-        options: {}
-    };
+        fetch(`/medidas/ultimas/${idtreino}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-    var myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+                    plotarGrafico(resposta, idtreino);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    function plotarGrafico(resposta, idtreino) {
+        console.log('iniciando plotagem do ranking...');
 
-    function slc_dias() {
-        var categoria = slc_id.value;
+        // Criando estrutura para plotar gráfico - labels
+        var dados = {
+            datasets: [{
+                data: []
+            },
+            {
+                data: []
+            }]
+        };
 
-        /* ----------------------------------------------------------------------------------------------- */
+        // Criando estrutura para plotar gráfico - dados
 
-        if (categoria == 'caloria') {
-            myChart.destroy();
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
 
-            var categoria1 = {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Média semanal - Calorias',
-                        backgroundColor: 'rgb(255, 94, 0)',
-                        borderColor: 'rgb(255, 94, 0)',
-                        data: [5, 2, 10, 8, 15, 12, 27, 32, 16, 14, 20, 18, 25, 22, 30, 21, 17],
-                    },
-                ],
-            };
-            config.data = categoria1;
-            myChart = new Chart(document.getElementById("myChart"), config);
-        }
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
 
-        /* ----------------------------------------------------------------------------------------------- */
+            dados.datasets[i].data.push(registro.duracao);
+            /* medida.distancia[i].push(registro.distancia);
+            medida.ritmo[i].push(registro.ritmo);
+            medida.calorias[i].push(registro.calorias); */
 
-        if (categoria == 'distancia') {
-            myChart.destroy();
+            alert(dados.datasets.data[i]);
+            /* possível criação de class para atribuir e utilizar o valor */
 
-            var categoria2 = {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Média semanal - Distância',
-                        backgroundColor: 'rgb(255, 94, 0)',
-                        borderColor: 'rgb(255, 94, 0)',
-                        data: [1.5, 1.2, 0.9, 0.4, 0.8, 4.0, 1.0, 0.6, 3.0, 5.1, 1.2, 3.0],
-                    },
-                ],
-            };
-            config.data = categoria2;
-            myChart = new Chart(document.getElementById("myChart"), config);
-        }
 
-        /* ----------------------------------------------------------------------------------------------- */
+            /*         console.log('----------------------------------------------')
+                    console.log('O ranking será plotado com os respectivos valores:')
+                    console.log('Labels:')
+                    console.log(labels)
+                    console.log('Dados:')
+                    console.log(dados.datasets)
+                    console.log('----------------------------------------------') */
 
-        if (categoria == 'maiortempo') {
-            myChart.destroy();
+            // Criando estrutura para plotar gráfico - config
+            /* tr_duracao.innerHTML = `${medida.duracao}`;
+            tr_distancia.innerHTML = `${distancia.duracao}`;
+            tr_ritmo.innerHTML = `${ritmo.duracao}`;
+            tr_calorias.innerHTML = `${calorias.duracao}`; */
 
-            var categoria3 = {
-                labels: labels,
-                datasets: [
-                    {
-                        label: "Média semanal - Maior Tempo",
-                        backgroundColor: 'rgb(255, 94, 0)',
-                        borderColor: 'rgb(255, 94, 0)',
-                        data: [2.45, 1.20, 0.33, 0.58, 2.06, 2.10, 3.27, 0.22, 2.16, 0.14, 2.21, 1.43],
-                    },
-                ],
-            };
-            config.data = categoria3;
-            myChart = new Chart(document.getElementById("myChart"), config);
-        }
 
-        /* ----------------------------------------------------------------------------------------------- */
-
-        if (categoria == 'menortempo') {
-            myChart.destroy();
-
-            var categoria4 = {
-                labels: labels,
-                datasets: [
-                    {
-                        label: "Média semanal - Menor Tempo",
-                        backgroundColor: 'rgb(255, 94, 0)',
-                        borderColor: 'rgb(255, 94, 0)',
-                        data: [0.45, 0.20, 1.33, 1.12, 0.58, 0.06, 0.10, 0.27, 0.42, 0.16, 0.14, 2.21, 1.43],
-                    },
-                ],
-            };
-            config.data = categoria4;
-            myChart = new Chart(document.getElementById("myChart"), config);
         }
     }
 </script>

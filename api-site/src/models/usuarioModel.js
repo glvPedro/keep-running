@@ -43,9 +43,22 @@ function registrar(duracao, distancia, ritmo, calorias, fk_usuario) {
     return database.executar(instrucao);
 }
 
+/* function consultar(duracao, distancia, ritmo, calorias) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function consultar():", duracao, distancia, ritmo, calorias);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+    select duracao, distancia, ritmo, calorias from treino;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return dashboard.html.consultar(instrucao);
+} */
+
 module.exports = {
     entrar,
     cadastrar,
     registrar,
-    listar,
+    /* consultar, */
+    listar
 };

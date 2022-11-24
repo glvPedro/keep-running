@@ -99,7 +99,7 @@ div #img_logo {
     border-radius: 20px;
     background-color: #edf0edc3;
     display: flex;
-    margin: 10px 20px 10px;
+    margin: 5vh 30vh 10px;
     box-shadow: 0 7px 10px #000000;
 }
 
@@ -110,7 +110,9 @@ div #img_logo {
     margin-top: 10px;
 }
 
-.grafico #slc_id, #slc_id2, #slc_id3 {
+.grafico #slc_id,
+#slc_id2,
+#slc_id3 {
     text-align: center;
 }
 
@@ -128,6 +130,27 @@ div #img_logo {
     align-items: center;
     border-radius: 5px;
 }
+
+/* ---------------------------------------------------------- */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/* ---------------------------------------------------------- */
 
 canvas {
     position: relative;

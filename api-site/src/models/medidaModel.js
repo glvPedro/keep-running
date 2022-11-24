@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idtreino, fk_usuario) {
 
     instrucaoSql = ''
 
@@ -11,17 +11,11 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                         momento,
                         FORMAT(momento, 'HH:mm:ss') as momento_grafico
                     from medida
-                    where fk_aquario = ${idAquario}
+                    where fk_aquario = ${idtreino}
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select t. duracao duração, t.distancia distância, t.ritmo, t.calorias
+        from usuario u join treino t on u.id = t.fk_usuario`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -31,7 +25,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idtreino) {
 
     instrucaoSql = ''
 
@@ -41,17 +35,11 @@ function buscarMedidasEmTempoReal(idAquario) {
         dht11_umidade as umidade,  
                         CONVERT(varchar, momento, 108) as momento_grafico, 
                         fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
+                        from medida where fk_aquario = ${idtreino} 
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+        instrucaoSql = `select duracao, distancia, ritmo, calorias from treino`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

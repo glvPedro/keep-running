@@ -20,6 +20,10 @@ router.post("/registrar", function (req, res) {
     usuarioController.registrar(req, res);
 });
 
+/* router.post("/consultar", function (req, res) {
+    usuarioController.consultar(req, res);
+}); */
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
