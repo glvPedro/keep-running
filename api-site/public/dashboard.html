@@ -56,21 +56,13 @@
                         <div id="legenda">confira os seus treinos!</div>
                         <div id="grafics">
 
-                            <table>
+                            <table id="registros">
                                 <tr>
                                     <th>duração</th>
                                     <th>distância</th>
                                     <th>ritmo</th>
                                     <th>calorias</th>
-                                </tr>
-
-                                <tr>
-                                    <th id="tr_duracao"></th>
-                                    <th id="tr_distancia"></th>
-                                    <th id="tr_ritmo"></th>
-                                    <th id="tr_calorias"></th>
-                                </tr>
-                                <button onclick="plotarGrafico()">teste</button>
+                                </tr>                                
                             </table>
                         </div>
                     </div>
@@ -114,14 +106,17 @@
         console.log('iniciando plotagem do ranking...');
 
         // Criando estrutura para plotar gráfico - labels
-        var dados = {
+        /* var dados = {
             datasets: [{
-                data: []
-            },
-            {
-                data: []
+                duracao: [],
+                distancia: [],
+                ritmo: [],
+                calorias: []
             }]
         };
+
+        //lista de dados para teste
+        var lista = [resposta.length + 1]; */
 
         // Criando estrutura para plotar gráfico - dados
 
@@ -133,12 +128,14 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            dados.datasets[i].data.push(registro.duracao);
-            /* medida.distancia[i].push(registro.distancia);
-            medida.ritmo[i].push(registro.ritmo);
-            medida.calorias[i].push(registro.calorias); */
+            /* dados.datasets[i].duracao.push(registro.duracao);
+            dados.datasets[i].distancia.push(registro.distancia);
+            dados.datasets[i].ritmo.push(registro.ritmo);
+            dados.datasets[i].calorias.push(registro.calorias);
 
-            alert(dados.datasets.data[i]);
+            //inserindo um objeto dados dentro da lista criada lá em cima(teste)
+            lista[i].push(dados); */
+
             /* possível criação de class para atribuir e utilizar o valor */
 
 
@@ -151,11 +148,12 @@
                     console.log('----------------------------------------------') */
 
             // Criando estrutura para plotar gráfico - config
-            /* tr_duracao.innerHTML = `${medida.duracao}`;
-            tr_distancia.innerHTML = `${distancia.duracao}`;
-            tr_ritmo.innerHTML = `${ritmo.duracao}`;
-            tr_calorias.innerHTML = `${calorias.duracao}`; */
-
+            registros.innerHTML += `<tr>
+                                        <th>${registro.duracao}</th>
+                                        <th>${registro.distancia}</th>
+                                        <th>${registro.ritmo}</th>
+                                        <th>${registro.calorias}</th>
+                                   </tr>`;
 
         }
     }

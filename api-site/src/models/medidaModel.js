@@ -14,7 +14,7 @@ function buscarUltimasMedidas(idtreino, fk_usuario) {
                     where fk_aquario = ${idtreino}
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select t. duracao duração, t.distancia distância, t.ritmo, t.calorias
+        instrucaoSql = `select t.duracao, t.distancia, t.ritmo, t.calorias
         from usuario u join treino t on u.id = t.fk_usuario`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
