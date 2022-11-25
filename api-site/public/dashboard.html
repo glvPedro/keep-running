@@ -76,29 +76,31 @@
 </body>
 
 </html>
-
 <script>
     var captura = [];
-    function obterDadosGrafico(idtreino) {
+    
+    
+    
+    function obterDadosGrafico() {
+        
         var fk_usuarioVar = Number(sessionStorage.getItem('ID_USUARIO'));
-
-        fetch(`/medidas/ultimas/${idtreino}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${fk_usuarioVar}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idtreino);
+                    plotarGrafico(resposta);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados p/ ranking: ${error.message}`);
             });
     }
-    function plotarGrafico(resposta, idtreino) {
+    function plotarGrafico(resposta) {
         console.log('iniciando plotagem do ranking...');
 
         for (i = 0; i < resposta.length; i++) {

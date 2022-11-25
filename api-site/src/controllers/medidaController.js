@@ -1,12 +1,11 @@
 var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
-    var idtreino = req.params.idtreino;
-    var fk_usuario = req.body.fk_usuario;
+    var fk_usuario = req.params.fk_usuarioVar;
 
     console.log(`Recuperando as ultimas medidas`);
 
-    medidaModel.buscarUltimasMedidas(idtreino, fk_usuario).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(fk_usuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

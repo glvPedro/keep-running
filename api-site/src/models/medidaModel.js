@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idtreino, fk_usuario) {
+function buscarUltimasMedidas(fk_usuario) {
 
     instrucaoSql = ''
 
@@ -15,7 +15,7 @@ function buscarUltimasMedidas(idtreino, fk_usuario) {
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select t.duracao, t.distancia, t.ritmo, t.calorias
-        from usuario u join treino t on u.id = t.fk_usuario`;
+        from usuario u join treino t on u.id = t.fk_usuario where u.id = ${fk_usuario}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
