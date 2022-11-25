@@ -110,7 +110,6 @@ function editar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-
 }
 
 function deletar(req, res) {

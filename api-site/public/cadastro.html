@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -14,9 +14,6 @@
 </head>
 
 <body>
-    <!----------------------------------------------------------------------------------------------------------------------->
-    <!-- HEADER -->
-
     <div class="header">
         <div class="container">
             <img id="img_logo" src="./assents/icon/istockphoto-503427908-1024x1024.jpg" alt="">
@@ -31,8 +28,6 @@
             </div>
         </div>
     </div>
-    <!----------------------------------------------------------------------------------------------------------------------->
-    <!-- BANNER -->
 
     <div class="banner">
         <div class="container">
@@ -73,9 +68,7 @@
             </div>
         </div>
     </div>
-    <!-------------------------------------------------------------------------------------------------------------------------->
 
-    <!-- FOOTER -->
     <div class="footer">
         <div class="row">
             <a href="https://www.facebook.com/keeprunningbrasil/"><i class="fa fa-facebook"></i></a>
@@ -103,10 +96,6 @@
 
 <script>
     function cadastrar() {
-        /* aguardar(); */
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var dtNascimentoVar = dtNascimento_input.value;
@@ -114,24 +103,15 @@
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
         if (nomeVar == "" || emailVar == "" || dtNascimentoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            alert('Mensagem de erro para todos os campos em branco')
-
-            /* finalizarAguardar();
-            return false; */
-        }
-        else {
-            /* setInterval(sumirMensagem, 5000) */
+            alert('Mensagem de erro para todos os campos em branco');
         }
 
-        // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 dtNascimentoServer: dtNascimentoVar,
@@ -142,8 +122,6 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                /* cardErro.style.display = "block"; */
-
                 alert("Cadastro realizado com sucesso!");
 
                 setTimeout(() => {
@@ -151,20 +129,13 @@
                 }, "1000")
 
                 limparFormulario();
-                /* finalizarAguardar(); */
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            /* finalizarAguardar(); */
         });
 
         return false;
     }
-
-    /*  function sumirMensagem() {
-         cardErro.style.display = "none"
-     } */
-
 </script>

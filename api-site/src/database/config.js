@@ -13,7 +13,7 @@ var sqlServerConfig = {
         idleTimeoutMillis: 30000
     },
     options: {
-        encrypt: true, // for azure
+        encrypt: true,
     }
 }
 
@@ -26,7 +26,6 @@ var mySqlConfig = {
 };
 
 function executar(instrucao) {
-    // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         return new Promise(function (resolve, reject) {
             sql.connect(sqlServerConfig).then(function () {
@@ -42,6 +41,7 @@ function executar(instrucao) {
                 return ("ERRO NO SQL SERVER (Azure): ", erro);
             });
         });
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         return new Promise(function (resolve, reject) {
             var conexao = mysql.createConnection(mySqlConfig);
@@ -65,7 +65,6 @@ function executar(instrucao) {
         });
     }
 }
-
 module.exports = {
     executar
 }

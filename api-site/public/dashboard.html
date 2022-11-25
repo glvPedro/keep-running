@@ -62,7 +62,7 @@
                                     <th>distância</th>
                                     <th>ritmo</th>
                                     <th>calorias</th>
-                                </tr>                                
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -81,10 +81,6 @@
     var captura = [];
     function obterDadosGrafico(idtreino) {
         var fk_usuarioVar = Number(sessionStorage.getItem('ID_USUARIO'));
-
-        /* if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        } */
 
         fetch(`/medidas/ultimas/${idtreino}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -105,56 +101,15 @@
     function plotarGrafico(resposta, idtreino) {
         console.log('iniciando plotagem do ranking...');
 
-        // Criando estrutura para plotar gráfico - labels
-        /* var dados = {
-            datasets: [{
-                duracao: [],
-                distancia: [],
-                ritmo: [],
-                calorias: []
-            }]
-        };
-
-        //lista de dados para teste
-        var lista = [resposta.length + 1]; */
-
-        // Criando estrutura para plotar gráfico - dados
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            /* dados.datasets[i].duracao.push(registro.duracao);
-            dados.datasets[i].distancia.push(registro.distancia);
-            dados.datasets[i].ritmo.push(registro.ritmo);
-            dados.datasets[i].calorias.push(registro.calorias);
-
-            //inserindo um objeto dados dentro da lista criada lá em cima(teste)
-            lista[i].push(dados); */
-
-            /* possível criação de class para atribuir e utilizar o valor */
-
-
-            /*         console.log('----------------------------------------------')
-                    console.log('O ranking será plotado com os respectivos valores:')
-                    console.log('Labels:')
-                    console.log(labels)
-                    console.log('Dados:')
-                    console.log(dados.datasets)
-                    console.log('----------------------------------------------') */
-
-            // Criando estrutura para plotar gráfico - config
             registros.innerHTML += `<tr>
                                         <th>${registro.duracao}</th>
                                         <th>${registro.distancia}</th>
                                         <th>${registro.ritmo}</th>
                                         <th>${registro.calorias}</th>
                                    </tr>`;
-
         }
     }
 </script>

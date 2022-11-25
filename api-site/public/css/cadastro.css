@@ -5,7 +5,6 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* ------------------------------------------------------------------------------------- */
 .header {
     padding: 15px;
     background-color: black;
@@ -57,10 +56,6 @@ li a {
     height: 2px;
 }
 
-/* ------------------------------------------------------------------------------------------------ */
-/* BANNER */
-/* CADASTRO */
-
 .banner {
     height: fit-content;
     padding: 200px 0;
@@ -104,9 +99,6 @@ button {
     cursor: pointer;
 }
 
-/* --------------------- */
-/* FORMULARIO */
-
 .formulario .tipo_campo {
     margin-top: 10px;
     font-size: 20px;
@@ -143,9 +135,6 @@ input {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ----------------------- */
-/* POS_BUTTOM */
-
 .txt1 {
     font-size: 16px;
     color: #666666;
@@ -159,8 +148,6 @@ input {
     text-decoration: none;
 }
 
-/* ------------------------------------------------------------------------------------------------ */
-/* FOOTER */
 .footer {
     background: #000;
     padding: 10px 0px;

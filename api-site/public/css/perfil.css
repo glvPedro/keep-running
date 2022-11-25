@@ -10,9 +10,6 @@
     flex-direction: row;
 }
 
-/* --------------------------------------------------- */
-/* MENU LATERAL */
-
 .menulateral {
     background-color: #000000;
     padding: 10px;
@@ -23,7 +20,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
 
 .menulateral ul {
@@ -55,7 +51,6 @@ span {
     margin: 10px;
 }
 
-/* QUANDO MOUSE ESTIVER EM CIMA */
 .menulateral ul li:hover {
     background: #fff;
     border-radius: 10px;
@@ -71,8 +66,6 @@ div #img_logo {
     justify-items: flex-end;
 
 }
-
-/* ----------------------------------------------------- */
 
 .banner {
     height: fit-content;
@@ -99,8 +92,6 @@ div #img_logo {
     border-radius: 20px;
 }
 
-/* -------------------------------------- */
-
 .banner3 {
     height: fit-content;
     /* padding: 200px 0; */
@@ -118,7 +109,6 @@ div #img_logo {
 .banner2 .container3 .card {
     background-color: #e5e5e5;
     margin-top: 5vh;
-    /* height: 700px; */
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -146,9 +136,6 @@ div #img_logo {
 button {
     cursor: pointer;
 }
-
-/* --------------------- */
-/* FORMULARIO */
 
 .formulario .tipo_campo {
     margin-top: 10px;
@@ -186,9 +173,6 @@ input {
     font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* ----------------------- */
-/* POS_BUTTOM */
 
 .txt1 {
     font-size: 16px;

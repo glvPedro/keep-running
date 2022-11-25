@@ -1,10 +1,8 @@
 var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
-
     var idtreino = req.params.idtreino;
     var fk_usuario = req.body.fk_usuario;
-
 
     console.log(`Recuperando as ultimas medidas`);
 
@@ -21,12 +19,9 @@ function buscarUltimasMedidas(req, res) {
     });
 }
 
-
 function buscarMedidasEmTempoReal(req, res) {
-
     var idtreino = req.params.idtreino;
     var fk_usuario = req.body.fk_usuario;
-
 
     console.log(`Recuperando medidas em tempo real`);
 
@@ -46,5 +41,4 @@ function buscarMedidasEmTempoReal(req, res) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal
-
 }
